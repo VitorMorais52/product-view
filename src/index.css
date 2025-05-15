@@ -13,7 +13,6 @@ h3,
 h4,
 h5,
 h6,
-p,
 figure,
 blockquote,
 dl,
@@ -38,8 +37,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: #232323;
-  color: #fff;
+  background-color: #ddd;
+  color: #000;
 }
 
 a {
@@ -64,16 +63,6 @@ select {
   font: inherit;
 }
 
-input:-webkit-autofill {
-  box-shadow: 0 0 0px 1000px white inset !important;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 :root {
   color-scheme: light dark;
 }
@@ -81,4 +70,8 @@ input[type="number"]::-webkit-outer-spin-button {
 :focus-visible {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
+}
+
+@theme {
+  --shadow-custom-light: 0px 0px 10px 2px rgb(0 0 0 / 5%);
 }

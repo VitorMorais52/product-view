@@ -1,7 +1,8 @@
+import ProductViewPage from "./pages/product-view-page.tsx";
 import "./App.css";
 
 function App() {
-  return <div>app.tsx</div>;
+  return <ProductViewPage />;
 }
 
 export default App;
