@@ -11,12 +11,9 @@ export default function ProductView() {
   return (
     <main
       id="product-view"
-      className="flex justify-center items-center max-w-[1280px] w-full mx-auto py-14 gap-14 rounded-lg bg-[#f0f0f0] shadow-custom-light "
+      className="flex flex-col md:flex-row justify-center items-center py-8 w-[90%] max-w-[1280px] md:w-full mx-auto gap-14 rounded-lg bg-[#f0f0f0] shadow-custom-light"
     >
-      <div
-        id="product-view-left-content"
-        className="rounded-md overflow-hidden"
-      >
+      <div id="product-view-left-content" className="rounded-md">
         <ProductGallery
           images={[
             { title: "photo1", url: photo1 },
@@ -25,10 +22,7 @@ export default function ProductView() {
           ]}
         />
       </div>
-      <div
-        id="product-view-right-content"
-        className="shadow-custom-hard flex flex-col mb-auto"
-      >
+      <div id="product-view-right-content" className="flex flex-col md:mb-auto">
         <ProductDetails details={{ title: "Product title", price: "109,90" }} />
         <ProductVariantSelector
           variants={[

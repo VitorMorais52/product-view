@@ -15,7 +15,7 @@ export default function ProductGallery({ images }: ProductGalleryInterface) {
 
   return (
     <section id="product-gallery" className="w-full max-w-md mx-auto">
-      <div className="relative overflow-hidden w-[35vw] max-w-[448px] rounded-md bg-[#f9f9f9]">
+      <div className="relative overflow-hidden  min-w-[280px] max-w-[448px] w-[35vw] rounded-md bg-[#f9f9f9]">
         <div
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${current * 100}%)` }}
