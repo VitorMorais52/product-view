@@ -33,14 +33,14 @@ export default function ProductGallery({ images }: ProductGalleryInterface) {
         <button
           onClick={prevImage}
           aria-label="Previous image"
-          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded cursor-pointer"
         >
           ‹
         </button>
         <button
           onClick={nextImage}
           aria-label="Next image"
-          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded cursor-pointer"
         >
           ›
         </button>
@@ -53,7 +53,7 @@ export default function ProductGallery({ images }: ProductGalleryInterface) {
             onClick={() => goToImage(index)}
             aria-label={`View image ${index + 1}`}
             className={clsx(
-              "w-14 h-14 p-[1px] rounded border focus:outline-none",
+              "flex w-14 h-14 p-[1px] rounded border focus:outline-none cursor-pointer",
               current === index
                 ? "border-blue-500"
                 : "border-transparent opacity-60 hover:opacity-100"

@@ -1,8 +1,8 @@
 export interface ProductInterface {
-  id: string;
+  id: number;
   title: string;
   price: string;
-  images: string[];
+  images: ProductImage[];
   variants: ProductVariantType[];
 }
 
