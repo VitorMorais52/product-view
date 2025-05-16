@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  getFromLocalStorage,
+  setToLocalStorage,
+} from "../../services/local-storage-service";
+
+const STORAGE_KEY = "product-cep";
 
 export default function ProductShipping() {
   const [cep, setCep] = useState("");
   const [error, setError] = useState("");
   const [address, setAddress] = useState<null | {
-    logradouro: string;
-    bairro: string;
-    localidade: string;
-    uf: string;
+    street: string;
+    neighborhood: string;
+    city: string;
+    state: string;
   }>(null);
+
+  useEffect(() => {
+    const stored = getFromLocalStorage<{ value: string }>(STORAGE_KEY);
+    if (stored?.value) setCep(stored.value);
+  }, []);
 
   const formatCep = (value: string) => value.replace(/\D/g, "").slice(0, 8);
 
@@ -25,6 +36,8 @@ export default function ProductShipping() {
       return;
     }
 
+    setToLocalStorage(STORAGE_KEY, cep);
+
     try {
       const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
       const data = await res.json();
@@ -33,7 +46,13 @@ export default function ProductShipping() {
         setError("CEP não encontrado.");
         setAddress(null);
       } else {
-        setAddress(data);
+        const { logradouro, localidade, bairro, uf } = data;
+        setAddress({
+          street: logradouro,
+          neighborhood: bairro,
+          city: localidade,
+          state: uf,
+        });
         setError("");
       }
     } catch {
@@ -42,12 +61,12 @@ export default function ProductShipping() {
   };
 
   return (
-    <section id="product-shipping" className="w-full max-w-md mx-auto mt-6">
+    <section className="w-full max-w-md mx-auto mt-6">
       <h2 className="text-md text-left font-medium">
         Disponibilidade de Entrega
       </h2>
 
-      <div className="flex gap-2 mt-2 mb-2 bg-[#f9f9f9] p-3 rounded-md shadow-custom-light ">
+      <div className="flex gap-2 mt-2 mb-2 bg-[#f9f9f9] p-3 rounded-md shadow-custom-light">
         <input
           type="text"
           placeholder="Digite seu CEP"
@@ -67,9 +86,9 @@ export default function ProductShipping() {
 
       {address && (
         <div className="mt-2 text-sm text-gray-800 text-left">
-          <p>{address.logradouro}</p>
+          <p>{address.street}</p>
           <p>
-            {address.bairro} - {address.localidade}/{address.uf}
+            {address.neighborhood} - {address.city}/{address.state}
           </p>
         </div>
       )}

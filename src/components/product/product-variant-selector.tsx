@@ -1,21 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clsx from "clsx";
+import {
+  getFromLocalStorage,
+  setToLocalStorage,
+} from "../../services/local-storage-service";
 import type { ProductVariantType } from "../../types/product";
 
 interface VariantSelectorInterface {
   variants: ProductVariantType[];
 }
 
+const STORAGE_KEY = "product-variants";
+
 export default function ProductVariantSelector({
   variants,
 }: VariantSelectorInterface) {
   const [selectedValues, setSelectedValues] = useState<Record<string, string>>(
-    {}
+    () => {
+      const stored = getFromLocalStorage<{ value: Record<string, string> }>(
+        STORAGE_KEY
+      );
+      return stored?.value ?? {};
+    }
   );
 
   const handleSelect = (name: string, value: string) => {
-    setSelectedValues((prev) => ({ ...prev, [name]: value }));
+    setSelectedValues((prev) => {
+      const updated = { ...prev, [name]: value };
+      return updated;
+    });
   };
+
+  useEffect(() => {
+    if (Object.keys(selectedValues).length > 0) {
+      setToLocalStorage(STORAGE_KEY, selectedValues, 15);
+    }
+  }, [selectedValues]);
 
   const renderColorSelector = (name: string, options: string[]) => (
     <div>
