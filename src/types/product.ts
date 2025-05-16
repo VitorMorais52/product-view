@@ -6,6 +6,10 @@ export interface ProductInterface {
   variants: ProductVariantType[];
 }
 
-export type ProductVariantType = { name: string; options: string[] };
+export type ProductVariantType = {
+  name?: string;
+  type?: string;
+  options: string[];
+};
 export type ProductDetailsType = Pick<ProductInterface, "title" | "price">;
 export type ProductImage = { title: string; url: string };

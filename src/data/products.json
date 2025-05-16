@@ -1,11 +1,20 @@
 [
   {
     "id": 1,
-    "title": "Product title",
-    "price": "109,90",
+    "title": "Nike Air Force",
+    "price": "980,90",
     "variants": [
-      { "name": "sizes", "options": ["32", "34", "36", "38", "40", "42"] },
-      { "name": "colors", "options": ["#000", "#353535", "#ddd", "#fff"] }
+      {
+        "name": "Tamanho",
+        "type": "size",
+        "options": ["32", "34", "36", "38", "40", "42"]
+      },
+      {
+        "name": "Cor",
+        "type": "color",
+        "options": ["#000", "#353535", "#ddd", "#fff"]
+      },
+      { "options": ["#000", "#353535", "#ddd", "#fff"] }
     ],
     "images": [
       {

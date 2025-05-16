@@ -1,4 +1,4 @@
-import products from "../../data/product.json";
+import products from "../../data/products.json";
 import type { ProductInterface } from "../../types/product";
 
 import ProductDetails from "./product-details";
