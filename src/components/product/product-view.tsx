@@ -13,7 +13,7 @@ export default function ProductView() {
   return (
     <main
       id="product-view"
-      className="flex flex-col md:flex-row justify-center items-center py-8 w-[90%] max-w-[1280px] md:w-full mx-auto gap-14 rounded-lg bg-[#f0f0f0] shadow-custom-light"
+      className="flex flex-col md:flex-row justify-center items-center py-8 w-[90%] max-w-[1280px] mx-auto gap-14 rounded-lg bg-[#f0f0f0] shadow-custom-light"
     >
       <div id="product-view-left-content" className="rounded-md">
         <ProductGallery images={images} />
